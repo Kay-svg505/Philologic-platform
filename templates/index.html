@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhiloLogic - AI-Powered Logical Reasoning</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+        .philosophers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 2rem 0;
+        }
+        .philosopher-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .philosopher-card:hover {
+            transform: translateY(-5px);
+        }
+        .btn {
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 10px 5px;
+        }
+        .btn:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🧠 PhiloLogic</h1>
+        <p>AI-Powered Logical Reasoning Platform</p>
+        <p>Learn critical thinking through the wisdom of great philosophers</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Welcome to PhiloLogic!</h2>
+            <p>Develop your logical reasoning skills using methodologies from:</p>
+            <ul>
+                <li><strong>Carl Jung</strong> - Analytical Psychology</li>
+                <li><strong>Plato</strong> - Allegory of the Cave</li>
+                <li><strong>Friedrich Nietzsche</strong> - Genealogy of Morals</li>
+                <li><strong>Immanuel Kant</strong> - Moral Theory</li>
+            </ul>
+        </section>
+
+        <div id="philosophers-section">
+            <h2>Choose Your Philosophical Guide</h2>
+            <div id="philosophers-grid" class="philosophers-grid">
+                <!-- Philosophers will be loaded here -->
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 2rem 0;">
+            <a href="/test-db" class="btn">Test Database Connection</a>
+            <a href="/register" class="btn">Sign Up</a>
+        </div>
+    </main>
+
+    <script>
+        // Load philosophers from API
+        fetch('/api/philosophers')
+            .then(response => response.json())
+            .then(philosophers => {
+                const grid = document.getElementById('philosophers-grid');
+                grid.innerHTML = '';
+                
+                philosophers.forEach(philosopher => {
+                    const card = document.createElement('div');
+                    card.className = 'philosopher-card';
+                    card.innerHTML = `
+                        <h3>${philosopher.name}</h3>
+                        <h4>${philosopher.work_title}</h4>
+                        <p>${philosopher.description}</p>
+                        <button class="btn" onclick="selectPhilosopher(${philosopher.id})">
+                            Start Learning
+                        </button>
+                    `;
+                    grid.appendChild(card);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading philosophers:', error);
+                document.getElementById('philosophers-grid').innerHTML = 
+                    '<p>Error loading philosophers. Please check your database connection.</p>';
+            });
+
+        function selectPhilosopher(id) {
+            alert(`Selected philosopher ID: ${id}. This will be expanded in future versions!`);
+        }
+    </script>
+</body>
+</html>
