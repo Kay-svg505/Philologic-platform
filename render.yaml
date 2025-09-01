@@ -1,1 +1,19 @@
-git init
+services:
+  - type: web
+    name: flask-app
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: FLASK_SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: flask-db
+          property: connectionString
+
+databases:
+  - name: flask-db
+    plan: free
+

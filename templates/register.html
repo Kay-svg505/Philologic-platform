@@ -18,6 +18,11 @@
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
+        h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+        }
         .form-group {
             margin-bottom: 1rem;
         }
@@ -25,6 +30,7 @@
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
+            color: #34495e;
         }
         input {
             width: 100%;
@@ -32,6 +38,7 @@
             border: 2px solid #ddd;
             border-radius: 5px;
             font-size: 16px;
+            box-sizing: border-box;
         }
         input:focus {
             border-color: #3498db;
@@ -46,6 +53,7 @@
             font-size: 16px;
             cursor: pointer;
             width: 100%;
+            margin-top: 10px;
         }
         .btn:hover {
             background: #2980b9;
@@ -57,42 +65,51 @@
         .back-link a {
             color: #3498db;
             text-decoration: none;
+            font-weight: bold;
+        }
+        .flash-message {
+            background: #e74c3c;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            text-align: center;
         }
     </style>
 </head>
 <body>
     <div class="form-container">
         <h2>Join PhiloLogic</h2>
-        
+
+        <!-- Display flashed messages -->
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
-                    <div style="background: #e74c3c; color: white; padding: 10px; border-radius: 5px; margin-bottom: 1rem;">
-                        {{ message }}
-                    </div>
+                    <div class="flash-message">{{ message }}</div>
                 {% endfor %}
             {% endif %}
         {% endwith %}
-        
+
+        <!-- Registration Form -->
         <form method="POST">
             <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
             </div>
-            
+
             <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
             </div>
-            
+
             <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter a strong password" required>
             </div>
-            
+
             <button type="submit" class="btn">Register</button>
         </form>
-        
+
         <div class="back-link">
             <a href="/">← Back to Home</a>
         </div>
