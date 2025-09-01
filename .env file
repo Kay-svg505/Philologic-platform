@@ -1,0 +1,8 @@
+# MySQL credentials
+DB_USER=root
+DB_PASS=YourPassword
+DB_HOST=localhost
+DB_NAME=philologicdb
+
+# Hugging Face API key
+HF_API_KEY=your_huggingface_api_key
