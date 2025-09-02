@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhiloLogic - AI-Powered Logical Reasoning</title>
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-content">
+            <h1>🧠 PhiloLogic</h1>
+            <p class="hero-subtitle">AI-Powered Logical Reasoning Platform</p>
+            <p class="hero-description">Learn critical thinking through the wisdom of great philosophers</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- Philosophers Section -->
+        <section class="philosophers-section">
+            <h2>Choose Your Philosophical Guide</h2>
+            <div id="philosophers-grid" class="philosophers-grid">
+                <!-- Philosophers will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Interactive QA Section -->
+        <section class="qa-section">
+            <h2>Ask a Philosophical Question</h2>
+            <div class="qa-form">
+                <textarea id="context" rows="5" placeholder="Enter context or philosophical text here..."></textarea>
+                <input id="question" type="text" placeholder="Enter your question..."/>
+                <button class="btn primary" onclick="askQuestion()">Get Answer</button>
+                <div id="answer" class="answer-display"></div>
+            </div>
+        </section>
+
+        <!-- Study Notes Section -->
+        <section class="notes-section">
+            <h2>Generate Flashcards from Notes</h2>
+            <form id="notes-form" class="notes-form">
+                <textarea id="notes" rows="6" placeholder="Paste your study notes here..."></textarea>
+                <button class="btn primary" type="submit">Generate Flashcards</button>
+            </form>
+            <div id="notes-error" class="error-message"></div>
+        </section>
+
+        <!-- Flashcards Display -->
+        <section class="flashcards-section">
+            <h2>Your Flashcards</h2>
+            <div id="flashcards-container" class="flashcards-grid">
+                <p class="placeholder-text">Submit study notes above to generate flashcards</p>
+            </div>
+        </section>
+
+        <!-- Auth Section -->
+        <section class="auth-section">
+            <div class="auth-buttons">
+                <a href="#" class="btn secondary" onclick="showAuthModal('register')">Sign Up</a>
+                <a href="#" class="btn secondary" onclick="showAuthModal('login')">Login</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAuthModal()">&times;</span>
+            <div id="auth-form-container"></div>
+        </div>
+    </div>
+
+    <script src="/src/main.js"></script>
+</body>
+</html>
