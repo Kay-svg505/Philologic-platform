@@ -1,0 +1,13 @@
+{
+  "name": "philologic-app",
+  "version": "1.0.0",
+  "description": "PhiloLogic - AI-Powered Logical Reasoning Platform",
+  "main": "app.py",
+  "scripts": {
+    "build": "echo 'No build process required for this Flask application'",
+    "start": "python app.py"
+  },
+  "keywords": ["philosophy", "education", "ai", "flask"],
+  "author": "",
+  "license": "ISC"
+}
